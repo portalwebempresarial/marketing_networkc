@@ -1,420 +1,289 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automatiza tu Consultorio - Marketing Network C</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0B101E; /* Azul noche muy oscuro */
-            --gold-accent: #D4AF37; /* Oro elegante */
-            --text-light: #F8F9FA;
-            --text-muted: #A0AABF;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --gold-primary: #D4AF37;
+            --gold-hover: #F3E5AB;
+            --bg-dark: #0B101E;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: #F8F9FA;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 86, 179, 0.1), transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.03), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(0, 86, 179, 0.05), transparent 30%);
             background-attachment: fixed;
         }
-
-        h1, h2, h3 {
+        h1, h2, h3, h4, .serif-font {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
         }
-
-        /* --- HEADER --- */
-        header {
-            padding: 25px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            background: rgba(11, 16, 30, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        header h1 {
-            font-size: 22px;
-            color: var(--text-light);
-            letter-spacing: 1px;
-        }
-        header h1 span {
-            color: var(--gold-accent);
-        }
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: var(--gold-accent);
-        }
-
-        /* --- HERO --- */
-        .hero {
-            text-align: center;
-            padding: 100px 20px 60px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .hero h2 span {
-            color: var(--gold-accent);
-        }
-        .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-        }
-
-        /* --- PLAN DESTACADO (GLASSMORPHISM) --- */
-        .premium-plan {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 1000px;
-            margin: 0 auto 80px auto;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        .premium-plan h3 {
-            font-size: 36px;
-            margin-bottom: 10px;
+        .gold-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8529 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .premium-plan .price {
-            font-size: 54px;
-            color: var(--gold-accent);
-            font-weight: 300;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 30px;
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8529 100%);
+            color: #000;
+            transition: all 0.3s ease;
         }
-        .premium-plan .price span {
-            font-size: 20px;
-            color: var(--text-muted);
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-        .feature-item {
-            padding: 20px;
-            border-left: 2px solid var(--gold-accent);
-            background: rgba(0,0,0,0.2);
-            border-radius: 0 10px 10px 0;
-        }
-        .feature-item strong {
-            display: block;
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: white;
-        }
-        .feature-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* --- SOCIAL PROOF (CASOS DE ÉXITO) --- */
-        .social-proof {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .social-proof h3 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-        .social-proof p {
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-        .social-proof a {
-            color: var(--gold-accent);
-            text-decoration: none;
-        }
-        .highlights {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        .highlight-circle {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 2px solid var(--gold-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: url('https://images.unsplash.com/photo-1638202993928-7267aad84c31?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80') center/cover;
-            color: transparent; /* Ocultamos el texto base, usamos pseudo-elemento para mostrarlo elegante */
-            position: relative;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-        .highlight-circle::after {
-            content: attr(data-name);
-            position: absolute;
-            bottom: -25px;
-            color: var(--text-light);
-            font-size: 12px;
-            white-space: nowrap;
-        }
-        .highlight-circle:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        /* --- FORMULARIO PREMIUM --- */
-        .form-section {
-            padding: 80px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .form-section h3 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .form-section > p {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-        form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            padding: 50px;
-            border-radius: 20px;
-        }
-        .full-width {
-            grid-column: span 2;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
+        input[type="text"], input[type="date"], input[type="time"], select, textarea {
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
             color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
             transition: all 0.3s ease;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--gold-accent);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 1px var(--gold-primary);
         }
-        button {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #D4AF37 0%, #AA8529 100%);
-            color: #000;
-            border: none;
-            padding: 18px;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 10px;
-        }
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 60px;
-        }
-        footer p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        footer a {
-            color: var(--gold-accent);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        @media (max-width: 768px) {
-            form { grid-template-columns: 1fr; padding: 30px;}
-            .full-width { grid-column: span 1; }
-            button { grid-column: span 1; }
-            .hero h2 { font-size: 36px; }
-            .premium-plan .price { font-size: 42px; }
+        .video-glow {
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #D4AF37, transparent, #AA8529);
+            border-radius: 1rem;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.3;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-yellow-600 selection:text-white">
 
-    <header>
-        <h1>Marketing <span>Network C</span></h1>
-        <nav>
-            <a href="https://marketingnetworkc.com/" target="_blank">Web Oficial</a>
-            <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Instagram</a>
-        </nav>
+    <!-- Navbar -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b-0 border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-wider serif-font">
+                MARKETING <span class="gold-text">NETWORK C</span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase text-gray-300">
+                <a href="https://marketingnetworkc.com/" target="_blank" class="hover:text-[#D4AF37] transition-colors">Catálogo</a>
+                <a href="#solucion" class="hover:text-[#D4AF37] transition-colors">Solución IA</a>
+                <a href="#planes" class="hover:text-[#D4AF37] transition-colors">Planes</a>
+            </nav>
+            <a href="#agenda" class="btn-gold px-6 py-2.5 rounded-full text-sm font-bold tracking-wide uppercase">
+                Agendar Demo
+            </a>
+        </div>
     </header>
 
-    <section class="hero">
-        <h2>Automatiza las citas de tu negocio con <span>Inteligencia Artificial</span></h2>
-        <p>Especialistas en escalar consultorios médicos y negocios premium. Deja que nuestro asistente de IA atienda a tus pacientes 24/7 y agende citas directamente en tu calendario.</p>
-    </section>
-
-    <section class="premium-plan">
-        <h3>Plan Integral Élite</h3>
-        <div class="price">$700.000 COP <span>/ mes</span></div>
-        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 18px;">El ecosistema completo para atraer, atender y cerrar pacientes de alto valor sin que tú pierdas tiempo.</p>
+    <!-- Hero Section con Video -->
+    <section class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-40 lg:pb-32 flex flex-col lg:flex-row items-center gap-12">
         
-        <div class="features">
-            <div class="feature-item">
-                <strong>🤖 Asistente IA 24/7</strong>
-                <p>Un agente inteligente que responde dudas, humaniza la atención y agenda citas automáticamente.</p>
+        <div class="lg:w-1/2 text-center lg:text-left">
+            <div class="inline-block px-4 py-1.5 rounded-full glass-panel border-white/10 text-xs font-bold uppercase tracking-widest text-[#D4AF37] mb-6">
+                Tecnología para Clínicas y Consultorios
             </div>
-            <div class="feature-item">
-                <strong>🌐 Landing Page Premium</strong>
-                <p>Diseño web de alta conversión (como este) diseñado exclusivamente para tu sector y servicios.</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+                El Agendamiento Perfecto por WhatsApp <br>
+                <span class="gold-text italic">Impulsado por IA</span>
+            </h1>
+            <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                Mira en tiempo real cómo nuestra Inteligencia Artificial atiende con total humanización, revisa la disponibilidad de tu equipo y agenda automáticamente a tus pacientes. Todo bajo tu control.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="#agenda" class="btn-gold px-8 py-4 rounded-lg text-sm font-bold tracking-widest uppercase text-center">
+                    Quiero esta tecnología
+                </a>
             </div>
-            <div class="feature-item">
-                <strong>🎨 Diseño y Edición</strong>
-                <p>Diseñador asignado para crear contenido visual impecable que proyecte autoridad médica o corporativa.</p>
-            </div>
-            <div class="feature-item">
-                <strong>📈 Estrategia Ads & Orgánico</strong>
-                <p>Publicación en FB e IG con copys persuasivos enfocados en venta y posicionamiento de marca.</p>
+        </div>
+
+        <div class="lg:w-1/2 w-full relative mt-10 lg:mt-0">
+            <div class="relative glass-panel p-2 rounded-2xl">
+                <div class="video-glow"></div>
+                
+                <!-- Video de stock integrado simulando uso de celular/WhatsApp -->
+                <video 
+                    class="w-full rounded-xl relative z-10 border border-white/10 shadow-2xl object-cover h-[400px]" 
+                    controls 
+                    autoplay 
+                    muted 
+                    loop 
+                    poster="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
+                    
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-smartphone-41147-large.mp4" type="video/mp4">
+                    
+                    Tu navegador no soporta el formato de video.
+                </video>
+                
+                <div class="absolute -bottom-5 -right-5 glass-panel px-6 py-3 rounded-xl border-t border-l border-white/20 shadow-xl z-20 hidden md:block">
+                    <div class="flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="text-sm font-semibold">IA respondiendo 24/7</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="social-proof">
-        <h3>Casos de Éxito y Experiencia</h3>
-        <p>Explora nuestras historias destacadas en <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Instagram</a> para ver resultados reales en distintos sectores.</p>
-        <div class="highlights">
-            <div class="highlight-circle" data-name="Salud"></div>
-            <div class="highlight-circle" data-name="USA Clientes"></div>
-            <div class="highlight-circle" data-name="Cali Clientes"></div>
-            <div class="highlight-circle" data-name="Bogotá"></div>
-            <div class="highlight-circle" data-name="Medellín"></div>
+    <!-- Características Específicas -->
+    <section id="solucion" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl mb-4">Control Total de tu <span class="gold-text">Agenda Médica</span></h2>
+            <p class="text-gray-400">Diseñado específicamente para el flujo de trabajo de consultorios modernos.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-panel p-8 rounded-2xl hover:border-[#D4AF37]/50 transition-colors">
+                <div class="text-[#D4AF37] text-3xl mb-4">📅</div>
+                <h3 class="text-xl mb-3">Agendas por Especialista</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    La IA consulta la disponibilidad específica de cada integrante de tu equipo. El paciente elige el doctor de su preferencia y la cita se asigna sin cruces de horarios.
+                </p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl hover:border-[#D4AF37]/50 transition-colors">
+                <div class="text-[#D4AF37] text-3xl mb-4">📲</div>
+                <h3 class="text-xl mb-3">App de Gestión Integrada</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Te entregamos acceso a una aplicación donde tú y tu equipo pueden ver las citas agendadas, crear nuevas manualmente, validar o cancelar con un solo clic.
+                </p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl hover:border-[#D4AF37]/50 transition-colors">
+                <div class="text-[#D4AF37] text-3xl mb-4">🔔</div>
+                <h3 class="text-xl mb-3">Masivos & Recordatorios</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Envíanos tu listado y lanzamos mensajes masivos a tus pacientes. Además, el sistema envía notificaciones automáticas de recordatorio cuando se acerca la cita.
+                </p>
+            </div>
         </div>
     </section>
 
-    <section class="form-section">
-        <h3>Auditoría y Agendamiento</h3>
-        <p>Reserva tu espacio para diseñar la ruta de crecimiento de tu empresa.</p>
-        
-        <form action="procesar_reserva.php" method="POST">
+    <!-- Plan Destacado -->
+    <section id="planes" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="glass-panel p-10 md:p-16 rounded-3xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-600/10 rounded-full blur-3xl"></div>
             
-            <div class="full-width">
-                <label for="empresa">Nombre de tu Consultorio / Empresa</label>
-                <input type="text" id="empresa" name="empresa" required placeholder="Ej: Clínica Dental Estética">
+            <div class="text-center mb-12 relative z-10">
+                <h2 class="text-3xl md:text-5xl mb-4">Plan Integral <span class="gold-text italic">Élite</span></h2>
+                <div class="text-5xl md:text-6xl font-light font-sans text-white mb-4">
+                    $700.000 <span class="text-xl text-gray-500 uppercase tracking-widest font-semibold">COP / mes</span>
+                </div>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    El ecosistema completo: Atracción de pacientes mediante pauta digital, conversión con diseño premium y cierre automático mediante Inteligencia Artificial.
+                </p>
             </div>
 
-            <div class="full-width">
-                <label for="dedicacion">¿A qué se dedica exactamente?</label>
-                <input type="text" id="dedicacion" name="dedicacion" required placeholder="Ej: Implantología y diseño de sonrisa">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">🤖 IA & Agendamiento</strong>
+                    <p class="text-gray-400 text-sm">Agente humanizado por WhatsApp 24/7, validación de agenda por especialista y App de control.</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">📢 Pauta Publicitaria (Ads)</strong>
+                    <p class="text-gray-400 text-sm">Administración estratégica de campañas en Meta Ads para atraer pacientes perfilados.</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">🌐 Landing Page Premium</strong>
+                    <p class="text-gray-400 text-sm">Diseño web de alta conversión enfocado en tu consultorio (como esta misma página).</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">🎨 Contenido & Diseño</strong>
+                    <p class="text-gray-400 text-sm">Diseñador asignado y edición de piezas gráficas que proyecten autoridad médica.</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">📈 Estrategia Orgánica</strong>
+                    <p class="text-gray-400 text-sm">Publicaciones en Facebook e Instagram con copys persuasivos y posicionamiento de marca.</p>
+                </div>
+                <div class="bg-black/30 p-6 rounded-xl border border-white/5">
+                    <strong class="block text-[#D4AF37] text-lg mb-2">✉️ Fidelización Masiva</strong>
+                    <p class="text-gray-400 text-sm">Envíos masivos a bases de datos y recordatorios automáticos para reducir inasistencias.</p>
+                </div>
             </div>
-
-            <div class="full-width">
-                <label for="objetivo">¿Cuál es tu principal objetivo comercial?</label>
-                <textarea id="objetivo" name="objetivo" rows="2" required placeholder="Ej: Llenar la agenda de pacientes de alto valor..."></textarea>
-            </div>
-
-            <div>
-                <label for="fecha">Fecha para nuestra reunión</label>
-                <input type="date" id="fecha" name="fecha" required>
-            </div>
-
-            <div>
-                <label for="hora">Hora preferida</label>
-                <input type="time" id="hora" name="hora" required>
-            </div>
-
-            <div>
-                <label for="plan">Servicio de interés</label>
-                <select id="plan" name="plan" required>
-                    <option value="Plan Integral - 700k">Plan Integral IA + Redes ($700.000 COP) - Recomendado</option>
-                    <option value="Agente IA">Solo Integración de Agente IA</option>
-                    <option value="Ads">Gestión de Publicidad (Ads)</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="presupuesto">Presupuesto inicial para Pauta</label>
-                <select id="presupuesto" name="presupuesto" required>
-                    <option value="Menos de 500k">Menos de $500.000 COP</option>
-                    <option value="500k - 1M">$500.000 - $1.000.000 COP</option>
-                    <option value="1M - 3M">$1.000.000 - $3.000.000 COP</option>
-                    <option value="Más de 3M">Más de $3.000.000 COP</option>
-                </select>
-            </div>
-
-            <button type="submit">Agendar Reunión Estratégica</button>
-        </form>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Marketing Network C. Transformando negocios con IA y Estrategia.</p>
-        <p>
-            <a href="https://marketingnetworkc.com/" target="_blank">Sitio Web Oficial</a> | 
-            <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Perfil de Instagram</a>
-        </p>
+    <!-- Formulario de Agendamiento -->
+    <section id="agenda" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl mb-4">Auditoría y <span class="gold-text">Agendamiento</span></h2>
+                <p class="text-gray-400">Reserva un espacio con nosotros y te mostraremos en vivo cómo la IA puede transformar tu operación.</p>
+            </div>
+
+            <form action="procesar_reserva.php" method="POST" class="glass-panel p-8 md:p-12 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Nombre del Consultorio / Empresa</label>
+                    <input type="text" name="empresa" required placeholder="Ej: Clínica Dental Estética" class="w-full p-4 rounded-lg">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">¿Cuál es tu especialidad?</label>
+                    <input type="text" name="dedicacion" required placeholder="Ej: Implantología, Medicina estética, etc." class="w-full p-4 rounded-lg">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Principal objetivo</label>
+                    <textarea name="objetivo" rows="2" required placeholder="Ej: Llenar la agenda, reducir inasistencias..." class="w-full p-4 rounded-lg resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Fecha sugerida</label>
+                    <input type="date" name="fecha" required class="w-full p-4 rounded-lg">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Hora sugerida</label>
+                    <input type="time" name="hora" required class="w-full p-4 rounded-lg">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Servicio de interés</label>
+                    <select name="plan" required class="w-full p-4 rounded-lg">
+                        <option value="Plan Integral - 700k">Plan Integral IA + Redes ($700.000 COP)</option>
+                        <option value="Agente IA">Solo Integración de Agente IA</option>
+                        <option value="Ads">Gestión de Publicidad (Ads)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Presupuesto pauta (Mensual)</label>
+                    <select name="presupuesto" required class="w-full p-4 rounded-lg">
+                        <option value="Menos de 500k">Menos de $500.000 COP</option>
+                        <option value="500k - 1M">$500.000 - $1.000.000 COP</option>
+                        <option value="1M - 3M">$1.000.000 - $3.000.000 COP</option>
+                        <option value="Más de 3M">Más de $3.000.000 COP</option>
+                    </select>
+                </div>
+
+                <div class="md:col-span-2 mt-4">
+                    <button type="submit" class="w-full btn-gold py-5 rounded-lg text-sm font-bold tracking-widest uppercase">
+                        Agendar Reunión Estratégica
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10 text-center">
+        <p class="text-gray-500 text-sm mb-4">&copy; 2026 Marketing Network C. Transformando negocios con IA y Estrategia.</p>
+        <div class="flex justify-center gap-6">
+            <a href="https://marketingnetworkc.com/" target="_blank" class="text-[#D4AF37] hover:text-white transition-colors text-sm uppercase tracking-wider font-semibold">Sitio Web Oficial</a>
+            <a href="https://www.instagram.com/marketing_networkc/" target="_blank" class="text-[#D4AF37] hover:text-white transition-colors text-sm uppercase tracking-wider font-semibold">Instagram</a>
+        </div>
     </footer>
 
 </body>
