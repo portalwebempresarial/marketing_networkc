@@ -3,149 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda tu Reunión - Marketing Network C</title>
+    <title>Automatiza tu Consultorio - Marketing Network C</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #1a1a1a;
-            --text-light: #f4f4f4;
-            --accent: #ffb703;
+            --bg-color: #0B101E; /* Azul noche muy oscuro */
+            --gold-accent: #D4AF37; /* Oro elegante */
+            --text-light: #F8F9FA;
+            --text-muted: #A0AABF;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: var(--secondary-color);
+            background-color: var(--bg-color);
             color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 86, 179, 0.1), transparent 25%);
+            background-attachment: fixed;
         }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* --- HEADER --- */
         header {
-            background-color: #000;
-            padding: 20px 50px;
+            padding: 25px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(11, 16, 30, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         header h1 {
-            font-size: 24px;
-            color: white;
+            font-size: 22px;
+            color: var(--text-light);
+            letter-spacing: 1px;
         }
-        header a {
-            color: white;
+        header h1 span {
+            color: var(--gold-accent);
+        }
+        nav a {
+            color: var(--text-light);
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: color 0.3s ease;
         }
-        header a:hover {
-            color: var(--primary-color);
+        nav a:hover {
+            color: var(--gold-accent);
         }
+
+        /* --- HERO --- */
         .hero {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 100px 20px 60px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         .hero h2 {
-            font-size: 40px;
+            font-size: 48px;
             margin-bottom: 20px;
-            color: var(--accent);
+            line-height: 1.2;
+        }
+        .hero h2 span {
+            color: var(--gold-accent);
         }
         .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
         }
-        .plan-destacado {
-            background-color: #222;
-            margin: -40px auto 40px auto;
-            max-width: 900px;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #333;
+
+        /* --- PLAN DESTACADO (GLASSMORPHISM) --- */
+        .premium-plan {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
             text-align: center;
-            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        .plan-destacado h3 {
-            color: var(--accent);
-            font-size: 32px;
-            margin-bottom: 15px;
+        .premium-plan h3 {
+            font-size: 36px;
+            margin-bottom: 10px;
         }
-        .plan-destacado .price {
-            font-size: 48px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 25px;
+        .premium-plan .price {
+            font-size: 54px;
+            color: var(--gold-accent);
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 30px;
+        }
+        .premium-plan .price span {
+            font-size: 20px;
+            color: var(--text-muted);
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
             text-align: left;
-            margin-bottom: 30px;
         }
         .feature-item {
-            background: #111;
             padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
+            border-left: 2px solid var(--gold-accent);
+            background: rgba(0,0,0,0.2);
+            border-radius: 0 10px 10px 0;
         }
+        .feature-item strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- SOCIAL PROOF (CASOS DE ÉXITO) --- */
         .social-proof {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #111;
+            padding: 60px 20px;
         }
         .social-proof h3 {
-            margin-bottom: 20px;
-            font-size: 28px;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .social-proof p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        .social-proof a {
+            color: var(--gold-accent);
+            text-decoration: none;
         }
         .highlights {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
         }
         .highlight-circle {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            border: 3px solid #e1306c;
+            border: 2px solid var(--gold-accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 600;
             text-align: center;
-            background-color: #333;
-            padding: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: url('https://images.unsplash.com/photo-1638202993928-7267aad84c31?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80') center/cover;
+            color: transparent; /* Ocultamos el texto base, usamos pseudo-elemento para mostrarlo elegante */
+            position: relative;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .highlight-circle::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -25px;
+            color: var(--text-light);
+            font-size: 12px;
+            white-space: nowrap;
         }
         .highlight-circle:hover {
-            transform: scale(1.1);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
+
+        /* --- FORMULARIO PREMIUM --- */
         .form-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             max-width: 800px;
             margin: 0 auto;
         }
         .form-section h3 {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: var(--primary-color);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .form-section > p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
         }
         form {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            background: #222;
-            padding: 40px;
-            border-radius: 10px;
+            gap: 25px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
         }
         .full-width {
             grid-column: span 2;
@@ -153,148 +233,170 @@
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            color: #ccc;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #111;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             color: white;
-            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: var(--gold-accent);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
         }
         button {
             grid-column: span 2;
-            background-color: var(--primary-color);
-            color: white;
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8529 100%);
+            color: #000;
             border: none;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
         }
         button:hover {
-            background-color: #004494;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
+
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: #000;
-            border-top: 1px solid #333;
+            padding: 40px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 60px;
+        }
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 10px;
         }
         footer a {
-            color: var(--accent);
+            color: var(--gold-accent);
             text-decoration: none;
+            margin: 0 10px;
         }
+
         @media (max-width: 768px) {
-            form { grid-template-columns: 1fr; }
+            form { grid-template-columns: 1fr; padding: 30px;}
             .full-width { grid-column: span 1; }
             button { grid-column: span 1; }
+            .hero h2 { font-size: 36px; }
+            .premium-plan .price { font-size: 42px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Marketing Network C</h1>
+        <h1>Marketing <span>Network C</span></h1>
         <nav>
-            <a href="https://marketingnetworkc.com/" target="_blank">Catálogo Completo</a>
+            <a href="https://marketingnetworkc.com/" target="_blank">Web Oficial</a>
             <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Instagram</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h2>Escala tu Empresa con una Estrategia que Sí Vende</h2>
-        <p>Agenda una reunión estratégica con nosotros. Analizaremos tu modelo de negocio y estructuraremos un ecosistema digital enfocado en resultados reales.</p>
+        <h2>Automatiza las citas de tu negocio con <span>Inteligencia Artificial</span></h2>
+        <p>Especialistas en escalar consultorios médicos y negocios premium. Deja que nuestro asistente de IA atienda a tus pacientes 24/7 y agende citas directamente en tu calendario.</p>
     </section>
 
-    <section class="plan-destacado">
-        <h3>El Plan Estrella para Escalar tu Negocio</h3>
-        <div class="price">$700.000 COP <span style="font-size: 20px; font-weight: normal; color: #ccc;">/ mes</span></div>
-        <p style="margin-bottom: 30px;">Todo lo que necesitas para digitalizar, atraer y cerrar ventas en piloto automático.</p>
+    <section class="premium-plan">
+        <h3>Plan Integral Élite</h3>
+        <div class="price">$700.000 COP <span>/ mes</span></div>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 18px;">El ecosistema completo para atraer, atender y cerrar pacientes de alto valor sin que tú pierdas tiempo.</p>
         
         <div class="features">
             <div class="feature-item">
-                <strong>🌐 Landing Page Optimizada</strong><br>
-                Diseño web enfocado en la conversión para recibir todo tu tráfico.
+                <strong>🤖 Asistente IA 24/7</strong>
+                <p>Un agente inteligente que responde dudas, humaniza la atención y agenda citas automáticamente.</p>
             </div>
             <div class="feature-item">
-                <strong>🎨 Contenido & Diseño</strong><br>
-                Creación y edición de contenido con un diseñador asignado a tu marca.
+                <strong>🌐 Landing Page Premium</strong>
+                <p>Diseño web de alta conversión (como este) diseñado exclusivamente para tu sector y servicios.</p>
             </div>
             <div class="feature-item">
-                <strong>📈 Estrategia Ganadora</strong><br>
-                Publicación en Facebook e Instagram con copys persuasivos (Orgánico + Ads).
+                <strong>🎨 Diseño y Edición</strong>
+                <p>Diseñador asignado para crear contenido visual impecable que proyecte autoridad médica o corporativa.</p>
             </div>
             <div class="feature-item">
-                <strong>🤖 Agente de IA Humanizado</strong><br>
-                Atención 24/7 y agendamiento automático de citas para aumentar tu probabilidad de venta.
+                <strong>📈 Estrategia Ads & Orgánico</strong>
+                <p>Publicación en FB e IG con copys persuasivos enfocados en venta y posicionamiento de marca.</p>
             </div>
         </div>
     </section>
 
     <section class="social-proof">
-        <h3>Resultados Comprobados en Múltiples Sectores</h3>
-        <p>Visita nuestro <a href="https://www.instagram.com/marketing_networkc/" target="_blank" style="color: var(--accent);">Instagram</a> y descubre los diseños y resultados en nuestras historias destacadas.</p>
+        <h3>Casos de Éxito y Experiencia</h3>
+        <p>Explora nuestras historias destacadas en <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Instagram</a> para ver resultados reales en distintos sectores.</p>
         <div class="highlights">
-            <div class="highlight-circle">Salud</div>
-            <div class="highlight-circle">USA Clientes</div>
-            <div class="highlight-circle">Cali Clientes</div>
-            <div class="highlight-circle">Tocancipá</div>
-            <div class="highlight-circle">Bogotá</div>
-            <div class="highlight-circle">Medellín</div>
+            <div class="highlight-circle" data-name="Salud"></div>
+            <div class="highlight-circle" data-name="USA Clientes"></div>
+            <div class="highlight-circle" data-name="Cali Clientes"></div>
+            <div class="highlight-circle" data-name="Bogotá"></div>
+            <div class="highlight-circle" data-name="Medellín"></div>
         </div>
     </section>
 
     <section class="form-section">
-        <h3>Agenda tu Reunión Estratégica</h3>
-        <form action="procesar_reunion.php" method="POST">
+        <h3>Auditoría y Agendamiento</h3>
+        <p>Reserva tu espacio para diseñar la ruta de crecimiento de tu empresa.</p>
+        
+        <form action="procesar_reserva.php" method="POST">
             
             <div class="full-width">
-                <label for="empresa">Nombre de tu empresa</label>
+                <label for="empresa">Nombre de tu Consultorio / Empresa</label>
                 <input type="text" id="empresa" name="empresa" required placeholder="Ej: Clínica Dental Estética">
             </div>
 
             <div class="full-width">
-                <label for="dedicacion">¿A qué se dedica tu empresa?</label>
-                <input type="text" id="dedicacion" name="dedicacion" required placeholder="Ej: Servicios odontológicos y diseño de sonrisa">
+                <label for="dedicacion">¿A qué se dedica exactamente?</label>
+                <input type="text" id="dedicacion" name="dedicacion" required placeholder="Ej: Implantología y diseño de sonrisa">
             </div>
 
             <div class="full-width">
-                <label for="objetivo">Principal objetivo al hacer marketing</label>
-                <textarea id="objetivo" name="objetivo" rows="3" required placeholder="Ej: Conseguir más pacientes para ortodoncia..."></textarea>
+                <label for="objetivo">¿Cuál es tu principal objetivo comercial?</label>
+                <textarea id="objetivo" name="objetivo" rows="2" required placeholder="Ej: Llenar la agenda de pacientes de alto valor..."></textarea>
             </div>
 
             <div>
-                <label for="fecha">Fecha sugerida para la reunión</label>
+                <label for="fecha">Fecha para nuestra reunión</label>
                 <input type="date" id="fecha" name="fecha" required>
             </div>
 
             <div>
-                <label for="hora">Hora sugerida</label>
+                <label for="hora">Hora preferida</label>
                 <input type="time" id="hora" name="hora" required>
             </div>
 
             <div>
-                <label for="plan">Plan que más te llama la atención</label>
+                <label for="plan">Servicio de interés</label>
                 <select id="plan" name="plan" required>
-                    <option value="Plan Integral - 700k">Plan Integral - $700.000 COP (Recomendado)</option>
-                    <option value="Agente IA">Solo Agente de IA</option>
-                    <option value="Ads">Solo Pauta Digital (Ads)</option>
-                    <option value="Otro">Otro / Necesito Asesoría</option>
+                    <option value="Plan Integral - 700k">Plan Integral IA + Redes ($700.000 COP) - Recomendado</option>
+                    <option value="Agente IA">Solo Integración de Agente IA</option>
+                    <option value="Ads">Gestión de Publicidad (Ads)</option>
                 </select>
             </div>
 
             <div>
-                <label for="presupuesto">Presupuesto de inicio (Pauta)</label>
+                <label for="presupuesto">Presupuesto inicial para Pauta</label>
                 <select id="presupuesto" name="presupuesto" required>
                     <option value="Menos de 500k">Menos de $500.000 COP</option>
                     <option value="500k - 1M">$500.000 - $1.000.000 COP</option>
@@ -303,16 +405,16 @@
                 </select>
             </div>
 
-            <button type="submit">Solicitar Reunión Ahora</button>
+            <button type="submit">Agendar Reunión Estratégica</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2026 Marketing Network C. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Marketing Network C. Transformando negocios con IA y Estrategia.</p>
         <p>
-            <a href="https://marketingnetworkc.com/" target="_blank">Web Oficial</a> | 
-            <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Instagram</a>
-        </nav>
+            <a href="https://marketingnetworkc.com/" target="_blank">Sitio Web Oficial</a> | 
+            <a href="https://www.instagram.com/marketing_networkc/" target="_blank">Perfil de Instagram</a>
+        </p>
     </footer>
 
 </body>
